@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: booklib
+  labels:
+    app: webDeploy
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: webPod
+    template:
+      metadata:
+        labels:
+          app: webPod
+      spec:
+        containers:
+          - name: bookstrore
+            image: booklibrary:1.1
+            imagePullPolicy: IfNotPresent
+            ports:
+              - containerPort: 5000
