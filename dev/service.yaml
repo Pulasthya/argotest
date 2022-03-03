@@ -1,14 +1,11 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: booksvc
-  labels:
-    app: webappsvc
+  name: myapp-service
 spec:
-  ports:
-  - name: map
-    protocol: TCP
-    port: 5000
-    targetPort: 5000
   selector:
-    app: webPod
+    app: myapp
+  ports:
+  - port: 8080
+    protocol: TCP
+    targetPort: 8080
